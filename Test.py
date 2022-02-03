@@ -1,8 +1,9 @@
 from http import client
+import ssl
 import pymongo
 
 
-client=pymongo.MongoClient("mongodb://localhost:27017/")
+client = pymongo.MongoClient("mongodb+srv://tushar_v04:3d0fMui38rF3XHLD@cashflowmanagement.hwbys.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 print(client)
 db=client["CashFlowManager"]
 userData=db["UserData"]
