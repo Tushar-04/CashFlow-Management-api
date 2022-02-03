@@ -1,1 +1,1 @@
-web: gunicorn Testapi:app
+web: gunicorn  --bind 0.0.0.0:$PORT Testapi:app
