@@ -9,8 +9,9 @@ def default():
 def signup():
     #Test.signup()
     user=dict(request.json)
-    Test.signup(user)
-    return "Sign up successful"
+    userid=Test.signup(user)
+    res={"Message":"Sign up successful","id":userid}
+    return res
 
 
 if __name__ == '__main__':

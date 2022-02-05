@@ -7,5 +7,9 @@ client = pymongo.MongoClient("mongodb+srv://tushar_v04:3d0fMui38rF3XHLD@cashflow
 print(client)
 db=client["CashFlowManager"]
 userData=db["UserData"]
+
 def signup(user):
     userData.insert_one(user)
+    userinfo=userData.find(user)
+    userid=userinfo["_id"]
+    return userid
