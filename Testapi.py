@@ -7,7 +7,6 @@ def default():
     
 @app.route("/signup" ,methods = ['POST'])
 def signup():
-    #Test.signup()
     user=dict(request.json)
     userid=Test.signup(user)
     res={"Message":"Sign up successful","id":userid}

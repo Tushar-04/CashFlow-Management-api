@@ -10,6 +10,6 @@ userData=db["UserData"]
 
 def signup(user):
     userData.insert_one(user)
-    userinfo=userData.find(user)
+    userinfo=userData.find_one(user)
     userid=userinfo["_id"]
     return userid
