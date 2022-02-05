@@ -9,9 +9,11 @@ def default():
 def signup():
     user=dict(request.json)
     userid=Test.signup(user)
-    res={"Message":"Sign up successful","id":userid}
+    res={"message":"Sign up successful","id":userid}
     return res
-
-
+@app.route("/login" ,methods = ['POST'])
+def login():
+    res=Test.login(request.json)
+    return res
 if __name__ == '__main__':
     app.run(debug=True)
