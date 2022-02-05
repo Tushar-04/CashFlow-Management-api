@@ -3,7 +3,7 @@ import Test
 app=Flask(__name__)
 @app.route("/",methods = ['GET'])
 def default():
-    return ({"Message":"Welcome to Cash flow manager api"})
+    return ({"message":"Welcome to Cash flow manager api"})
     
 @app.route("/signup" ,methods = ['POST'])
 def signup():
