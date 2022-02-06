@@ -11,11 +11,12 @@ def signup(user):
     if(userinfo !=None):
         res={"message":"Email already exists","id":None}
         return res
-    userData.insert_one(user)
-    userinfo=userData.find_one(user)
-    userid=str(userinfo["_id"])
-    res={"message":"Sign up successful","id":userid}
-    return res
+    else:
+        userData.insert_one(user)
+        userinfo=userData.find_one(user)
+        userid=str(userinfo["_id"])
+        res={"message":"Sign up successful","id":userid}
+        return res
 
 
 def login(user):
