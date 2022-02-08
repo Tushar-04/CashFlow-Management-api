@@ -4,6 +4,7 @@ client = pymongo.MongoClient("mongodb+srv://tushar_v04:3d0fMui38rF3XHLD@cashflow
 db=client["CashFlowManager"]
 userData=db["UserData"]
 billData=db["billData"]
+subscriptionData=db["subscriptionData"]
 
 
 def signup(user):
@@ -37,3 +38,9 @@ def bill(billinfo):
     info=billData.find_one(billinfo)
     billid=str(info["_id"])
     return ({"message":"Bill entered","id":billid})
+
+def subscription(info):
+    subscriptionData.insert_one(info)
+    subs=subscriptionData.find_one(info)
+    subsid=str(subs["_id"])
+    return ({"message":"Subscription added","id":subsid})

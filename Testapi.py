@@ -38,5 +38,11 @@ def bill():
     res=Test.bill(request.json)
     return res
 
+@app.route("/subscription" ,methods = ['POST'])
+@auth.login_required
+def subscription():
+    res=Test.subscription(request.json)
+    return res
+
 if __name__ == '__main__':
     app.run(debug=True)
