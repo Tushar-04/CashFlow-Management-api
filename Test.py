@@ -1,4 +1,5 @@
 import pymongo
+from bson import ObjectId
 
 client = pymongo.MongoClient("mongodb+srv://tushar_v04:3d0fMui38rF3XHLD@cashflowmanagement.hwbys.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=client["CashFlowManager"]
@@ -44,3 +45,10 @@ def subscription(info):
     subs=subscriptionData.find_one(info)
     subsid=str(subs["_id"])
     return ({"message":"Subscription added","id":subsid})
+
+def getuser(uid):
+    user=userData.find_one({"_id":ObjectId(uid)},{"_id":0})
+    if(user==None):
+        return {"id":None}
+    user["id"]=uid
+    return (user)
