@@ -44,9 +44,10 @@ def subscription():
     res=Test.subscription(request.json)
     return res
 
-@app.route("/getuser/<string:uid>" ,methods = ['GET'])
+@app.route("/getuser" ,methods = ['GET'])
 @auth.login_required
-def getuser(uid):
+def getuser():
+    uid=request.args.get("id")
     res=Test.getuser(uid)
     return res
 
