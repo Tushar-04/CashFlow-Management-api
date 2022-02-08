@@ -47,6 +47,8 @@ def subscription(info):
     return ({"message":"Subscription added","id":subsid})
 
 def getuser(uid):
+    if(len(uid)!=24):
+        return {"id":None}
     user=userData.find_one({"_id":ObjectId(uid)},{"_id":0})
     if(user==None):
         return {"id":None}
