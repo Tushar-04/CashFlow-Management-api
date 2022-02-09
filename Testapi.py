@@ -1,3 +1,5 @@
+from cmath import isnan
+from pickle import NONE
 from flask import Flask, request,jsonify
 import Test
 from flask_httpauth import HTTPBasicAuth
@@ -50,6 +52,30 @@ def getuser():
     uid=request.args.get("id")
     res=Test.getuser(uid)
     return jsonify(res)
+
+@app.route("/getbills" ,methods = ['GET'])
+@auth.login_required
+def getbills():
+    uid=request.args.get("uid")
+    id=request.args.get("bid")
+    if(not id):
+        res=Test.getbills(uid)
+    else:
+        res=Test.getbill(uid,id)
+    return jsonify(res)
+
+
+@app.route("/getsubscriptions" ,methods = ['GET'])
+@auth.login_required
+def getsubscriptions():
+    uid=request.args.get("sid")
+    id=request.args.get("sid")
+    if(not id):
+        res=Test.getsubscriptions(uid)
+    else:
+        res=Test.getsubscription(uid,id)
+    return jsonify(res)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

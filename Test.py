@@ -1,3 +1,4 @@
+from re import sub
 import pymongo
 from bson import ObjectId
 
@@ -54,3 +55,39 @@ def getuser(uid):
         return {"id":None}
     user["id"]=uid
     return (user)
+
+def getbills(uid):
+    bill=billData.find({"uid":uid})
+    data={"data":[]}
+    for item in bill:
+        item["id"]=str(item.pop("_id"))
+        data["data"].append(item)
+    if(len(data["data"])==0):
+        return {"data":None}
+    return (data)
+
+def getsubscriptions(uid):
+    subs=subscriptionData.find({"uid":uid})
+    if(subs==None):
+        return {"data":None}
+    data={"data":[]}
+    for item in subs:
+        item["id"]=str(item.pop("_id"))
+        data["data"].append(item)
+    if(len(data["data"])==0):
+        return {"data":None}
+    return (data)
+
+def getbill(uid,id):
+    bill=billData.find_one({"_id":int(id),"uid":uid},{"_id":0})
+    if(bill==None):
+        return {"id":None}
+    bill["id"]=int(id)
+    return (bill)
+
+def getsubscription(uid,id):
+    subs=subscriptionData.find_one({"_id":int(id),"uid":uid},{"_id":0})
+    if(subs==None):
+        return {"id":None}
+    subs["id"]=int(id)
+    return (subs)
