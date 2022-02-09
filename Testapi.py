@@ -7,7 +7,7 @@ from flask_httpauth import HTTPBasicAuth
 app=Flask(__name__)
 auth=HTTPBasicAuth()
 USER_DATA={
-    "admin":"SuperSecretPassword"
+    "admin":"WrongPassword"
 }
 @auth.verify_password
 def verify(username,password):

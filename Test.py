@@ -2,7 +2,7 @@ from re import sub
 import pymongo
 from bson import ObjectId
 
-client = pymongo.MongoClient("mongodb+srv://tushar_v04:3d0fMui38rF3XHLD@cashflowmanagement.hwbys.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://@cashflowmanagement.hwbys.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=client["CashFlowManager"]
 userData=db["UserData"]
 billData=db["billData"]
