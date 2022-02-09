@@ -68,7 +68,7 @@ def getbills():
 @app.route("/getsubscriptions" ,methods = ['GET'])
 @auth.login_required
 def getsubscriptions():
-    uid=request.args.get("sid")
+    uid=request.args.get("uid")
     id=request.args.get("sid")
     if(not id):
         res=Test.getsubscriptions(uid)
